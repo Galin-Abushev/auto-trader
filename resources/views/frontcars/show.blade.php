@@ -1,7 +1,8 @@
 <x-layout>
     <section>
-        <h3 class="mb-6 font-bold border-b-4 border-blue-600 ">НОВО ТЪРСЕНЕ</h3>
-
+        <div class="mb-6 font-bold border-b-4 border-blue-600 ">
+            <a href="/frontcars/search">НОВО ТЪРСЕНЕ </a>
+        </div>
         <div class="grid gap-4 sm:grid-cols-12 rounded-xl ">
 
             <div class="mb-4 col-span-8 min-h-[600px] popup-gallery">
@@ -46,7 +47,7 @@
                     {{ $car->car_version}}
                 </div>
 
-                <div class="mt-2 ml-4 font-medium mr-4italic">
+                <div class="mt-2 ml-4 mr-4 italic font-medium">
                     Намира се в {{ $car->car_place}}
                 </div>
                 <div class="mt-2 ml-4 mr-4 text-4xl font-bold text-blue-500">

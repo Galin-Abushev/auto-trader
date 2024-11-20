@@ -81,3 +81,11 @@ div.header {
     text-transform: none;
     font-size: 25px;
 }
+
+.test2 {
+    display: inline-block;
+}
+
+.test3 {
+    display: inline-block;
+}

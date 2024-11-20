@@ -1,0 +1,1 @@
+<h1 class="mb-8 text-xl font-bold text-center"><?php echo e($slot); ?></h1><?php /**PATH C:\auto-trader\resources\views/components/page-heading.blade.php ENDPATH**/ ?>

@@ -1,0 +1,1 @@
+<a href="" class="transition-colors duration-300 border-b border-black/60 hover:text-blue-300"> {{ $slot }} </a>

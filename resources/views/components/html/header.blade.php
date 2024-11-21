@@ -14,7 +14,7 @@
                     @csrf
                     @method('DELETE')
 
-                    <button>Log Out</button>
+                    <button>Изход</button>
                 </form>
             </div>
 

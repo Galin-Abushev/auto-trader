@@ -1,6 +1,5 @@
 /* header */
 div.header {
-    background-color: #ccc;
 }
 
 .result-view {
@@ -86,6 +85,8 @@ div.header {
     display: inline-block;
 }
 
-.test3 {
-    display: inline-block;
+.right-section {
+    position: sticky;
+    top: 20px; /* Stick to the top of the viewport */
+    align-self: start; /* Ensures it aligns properly within the grid */
 }

@@ -3,6 +3,7 @@
         <div class="mb-6 font-bold border-b-4 border-blue-600 ">
             <a href="/frontcars/search">НОВО ТЪРСЕНЕ </a>
         </div>
+
         <div class="grid gap-4 sm:grid-cols-12 rounded-xl ">
 
             <div class="mb-4 col-span-8 min-h-[600px] popup-gallery">
@@ -39,8 +40,9 @@
             </div>
 
 
-            <div class="ml-4 rounded-sm border-b-4 border-2 border-neutral-200 col-span-4 max-h-[400px] gap-1 scrolling-div"
-                style="position: relative; down: 200px; top: 1px; right: 5px; left: 5px; width: 317px; height: 400px;">
+            <div
+                class="ml-4 rounded-sm border-b-4 border-2 border-neutral-200 col-span-4 min-h-[400px] gap-1 right-section">
+
                 <div class="mt-2 ml-4 mr-4">
                     <strong>{{ $car->carBrand->brand_name}}</strong>
                     <strong>{{ $car->carModel->model_name}}</strong>
@@ -207,6 +209,7 @@
         <x-show.equipments :$car :$carequipmentgroups />
 
         <x-show.similar :$similarCars />
+
     </section>
 
 

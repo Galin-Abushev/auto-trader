@@ -14,7 +14,7 @@
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('DELETE'); ?>
 
-                    <button>Log Out</button>
+                    <button>Изход</button>
                 </form>
             </div>
 

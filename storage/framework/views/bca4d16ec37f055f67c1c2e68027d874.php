@@ -9,9 +9,7 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
     <section>
-        <div class="mb-6 font-bold border-b-4 border-blue-600 ">
-            <a href="/frontcars/search">НОВО ТЪРСЕНЕ </a>
-        </div>
+        <h3 class="mb-6 font-bold border-b-4 border-blue-600 ">НОВО ТЪРСЕНЕ</h3>
 
         <div class="grid gap-4 sm:grid-cols-12 rounded-xl ">
 
@@ -49,9 +47,8 @@
             </div>
 
 
-            <div
-                class="ml-4 rounded-sm border-b-4 border-2 border-neutral-200 col-span-4 min-h-[400px] gap-1 right-section">
-
+            <div class="ml-4 rounded-sm border-b-4 border-2 border-neutral-200 col-span-4 max-h-[400px] gap-1 right-section"
+                style=" 200px; top: 1px; right: 5px; left: 5px; width: 317px; height: 400px;">
                 <div class="mt-2 ml-4 mr-4">
                     <strong><?php echo e($car->carBrand->brand_name); ?></strong>
                     <strong><?php echo e($car->carModel->model_name); ?></strong>
@@ -59,7 +56,7 @@
 
                 </div>
 
-                <div class="mt-2 ml-4 mr-4 italic font-medium">
+                <div class="mt-2 ml-4 font-medium mr-4italic">
                     Намира се в <?php echo e($car->car_place); ?>
 
                 </div>
@@ -261,6 +258,40 @@
 <?php unset($__componentOriginalb054fd67156cd7eea5571e610dda5054); ?>
 <?php endif; ?>
 
+        <?php if(auth()->check()): ?>
+        <form action="<?php echo e(route('send-query')); ?>" method="POST" class="mt-4">
+            <?php echo csrf_field(); ?>
+
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-bold">Your Name</label>
+                <input type="text" name="name" id="name" value="<?php echo e(auth()->user()->name); ?>"
+                    class="w-full px-3 py-2 border rounded" readonly>
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-bold">Your Email</label>
+                <input type="email" name="email" id="email" value="<?php echo e(auth()->user()->email); ?>"
+                    class="w-full px-3 py-2 border rounded" readonly>
+            </div>
+
+            <div class="mb-4">
+                <label for="message" class="block text-sm font-bold">Your Query</label>
+                <textarea name="message" id="message" rows="5" class="w-full px-3 py-2 border rounded"
+                    required></textarea>
+            </div>
+
+            <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
+                Send Query
+            </button>
+        </form>
+        <?php endif; ?>
+        <?php if(session('success')): ?>
+        <div class="p-4 mb-4 text-green-700 bg-green-200 border border-green-300 rounded">
+            <?php echo e(session('success')); ?>
+
+        </div>
+        <?php endif; ?>
+
         <?php if (isset($component)) { $__componentOriginalf2dea380996b177535c782c4f12809a9 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalf2dea380996b177535c782c4f12809a9 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.show.similar','data' => ['similarCars' => $similarCars]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -281,6 +312,7 @@
 <?php $component = $__componentOriginalf2dea380996b177535c782c4f12809a9; ?>
 <?php unset($__componentOriginalf2dea380996b177535c782c4f12809a9); ?>
 <?php endif; ?>
+
 
     </section>
 

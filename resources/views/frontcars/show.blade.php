@@ -1,8 +1,6 @@
 <x-layout>
     <section>
-        <div class="mb-6 font-bold border-b-4 border-blue-600 ">
-            <a href="/frontcars/search">НОВО ТЪРСЕНЕ </a>
-        </div>
+        <h3 class="mb-6 font-bold border-b-4 border-blue-600 ">НОВО ТЪРСЕНЕ</h3>
 
         <div class="grid gap-4 sm:grid-cols-12 rounded-xl ">
 
@@ -40,16 +38,15 @@
             </div>
 
 
-            <div
-                class="ml-4 rounded-sm border-b-4 border-2 border-neutral-200 col-span-4 min-h-[400px] gap-1 right-section">
-
+            <div class="ml-4 rounded-sm border-b-4 border-2 border-neutral-200 col-span-4 max-h-[400px] gap-1 right-section"
+                style=" 200px; top: 1px; right: 5px; left: 5px; width: 317px; height: 400px;">
                 <div class="mt-2 ml-4 mr-4">
                     <strong>{{ $car->carBrand->brand_name}}</strong>
                     <strong>{{ $car->carModel->model_name}}</strong>
                     {{ $car->car_version}}
                 </div>
 
-                <div class="mt-2 ml-4 mr-4 italic font-medium">
+                <div class="mt-2 ml-4 font-medium mr-4italic">
                     Намира се в {{ $car->car_place}}
                 </div>
                 <div class="mt-2 ml-4 mr-4 text-4xl font-bold text-blue-500">
@@ -208,7 +205,41 @@
 
         <x-show.equipments :$car :$carequipmentgroups />
 
+        @if (auth()->check())
+        <form action="{{ route('send-query') }}" method="POST" class="mt-4">
+            @csrf
+
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-bold">Your Name</label>
+                <input type="text" name="name" id="name" value="{{ auth()->user()->name }}"
+                    class="w-full px-3 py-2 border rounded" readonly>
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-bold">Your Email</label>
+                <input type="email" name="email" id="email" value="{{ auth()->user()->email }}"
+                    class="w-full px-3 py-2 border rounded" readonly>
+            </div>
+
+            <div class="mb-4">
+                <label for="message" class="block text-sm font-bold">Your Query</label>
+                <textarea name="message" id="message" rows="5" class="w-full px-3 py-2 border rounded"
+                    required></textarea>
+            </div>
+
+            <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
+                Send Query
+            </button>
+        </form>
+        @endif
+        @if (session('success'))
+        <div class="p-4 mb-4 text-green-700 bg-green-200 border border-green-300 rounded">
+            {{ session('success') }}
+        </div>
+        @endif
+
         <x-show.similar :$similarCars />
+
 
     </section>
 

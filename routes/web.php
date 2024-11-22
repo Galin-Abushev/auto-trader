@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\RegionController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\AdminCarController;
 use App\Http\Controllers\CarBrandController;
@@ -12,8 +13,12 @@ use App\Http\Controllers\CarEngineController;
 use App\Http\Controllers\CarEquipmentsController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\CarEquipmentGroupsController;
+use App\Mail\queryEmail;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/', [CarController::class, 'index']);
+
+Route::post('/send-query', [CarController::class, 'sendQuery'])->name('send-query');
 
 Route::get('frontcars/search', [CarController::class, 'search']);
 Route::get('frontcars/result', [CarController::class, 'result']);

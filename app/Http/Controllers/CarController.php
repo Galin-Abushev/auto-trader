@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\Region;
+use App\Mail\QueryEmail;
 use App\Models\CarBrand;
 use App\Models\CarModel;
 use App\Models\CarPhoto;
@@ -13,6 +14,7 @@ use App\Models\CarEquipments;
 use App\Models\CarsEquipments;
 use App\Models\CarEquipmentGroups;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 
 class CarController extends Controller
@@ -514,5 +516,25 @@ class CarController extends Controller
         return view('frontcars.result', compact('data', 'carbrands',  'carengines', 'regions', 'carequipmentgroups', 'carequipments', 'selectedBrand', 'selectedEngine', 'selectedRegion', 'car_km_from', 'car_km_to', 'car_version' ));
     }
 
+    public function sendQuery(Request $request)
+    {
+        // Validate the input
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'message' => 'required|string|max:1000',
+        ]);
+
+        // Get the car owner's email
+        $carOwnerEmail = $request->car_owner_email;
+
+        // Send the email
+        Mail::to($carOwnerEmail)->send(
+            new QueryEmail($validated['name'], $validated['email'], $validated['message'])
+        );
+
+        // Redirect back with a success message
+        return back()->with('success', 'Your query has been sent successfully.');
+    }
 
 }

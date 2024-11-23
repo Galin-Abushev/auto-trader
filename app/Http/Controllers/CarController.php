@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\User;
 use App\Models\Region;
 use App\Mail\QueryEmail;
 use App\Models\CarBrand;
 use App\Models\CarModel;
 use App\Models\CarPhoto;
 use App\Models\CarEngine;
+use App\Models\CarRequest;
 use Illuminate\Http\Request;
 use App\Models\CarEquipments;
 use App\Models\CarsEquipments;
@@ -238,7 +240,11 @@ class CarController extends Controller
         ->limit(4)
         ->get();
 
-        return view('frontcars.show',compact('car', 'cars', 'carequipments', 'carsequipments', 'carequipmentgroups', 'similarCars'));
+        $carRequests = CarRequest::where('car_id', $car->id)
+        ->where('user_id', '!=', Auth::user()->id) // Exclude requests made by the logged-in user
+        ->get();
+
+        return view('frontcars.show',compact('car', 'cars', 'carequipments', 'carsequipments', 'carequipmentgroups', 'similarCars', 'carRequests'));
         }
 
     /**
@@ -518,11 +524,21 @@ class CarController extends Controller
 
     public function sendQuery(Request $request)
     {
+
         // Validate the input
         $validated = $request->validate([
+            'car_id' => 'required|exists:cars,id',
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             'message' => 'required|string|max:1000',
+        ]);
+
+        CarRequest::create([
+            'car_id' => $validated['car_id'],
+            'user_id' => Auth::user()->id,
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'message' => $validated['message'],
         ]);
 
         // Get the car owner's email
@@ -534,7 +550,7 @@ class CarController extends Controller
         );
 
         // Redirect back with a success message
-        return back()->with('success', 'Your query has been sent successfully.');
+        return back()->with('success', 'Твоето запитване беше изпратено успешно!');
     }
 
 }

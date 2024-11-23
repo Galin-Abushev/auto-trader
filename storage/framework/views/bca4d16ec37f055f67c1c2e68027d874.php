@@ -258,41 +258,54 @@
 <?php unset($__componentOriginalb054fd67156cd7eea5571e610dda5054); ?>
 <?php endif; ?>
 
-        <?php if(auth()->check()): ?>
-        <form action="<?php echo e(route('send-query')); ?>" method="POST" class="mt-4">
-            <?php echo csrf_field(); ?>
+        <?php if (isset($component)) { $__componentOriginal892fd45ec70701f43171e90ac3ecc4b3 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal892fd45ec70701f43171e90ac3ecc4b3 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.show.query','data' => ['car' => $car]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('show.query'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['car' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($car)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal892fd45ec70701f43171e90ac3ecc4b3)): ?>
+<?php $attributes = $__attributesOriginal892fd45ec70701f43171e90ac3ecc4b3; ?>
+<?php unset($__attributesOriginal892fd45ec70701f43171e90ac3ecc4b3); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal892fd45ec70701f43171e90ac3ecc4b3)): ?>
+<?php $component = $__componentOriginal892fd45ec70701f43171e90ac3ecc4b3; ?>
+<?php unset($__componentOriginal892fd45ec70701f43171e90ac3ecc4b3); ?>
+<?php endif; ?>
 
-            <div class="mb-4">
-                <label for="name" class="block text-sm font-bold">Your Name</label>
-                <input type="text" name="name" id="name" value="<?php echo e(auth()->user()->name); ?>"
-                    class="w-full px-3 py-2 border rounded" readonly>
-            </div>
 
-            <div class="mb-4">
-                <label for="email" class="block text-sm font-bold">Your Email</label>
-                <input type="email" name="email" id="email" value="<?php echo e(auth()->user()->email); ?>"
-                    class="w-full px-3 py-2 border rounded" readonly>
-            </div>
 
-            <div class="mb-4">
-                <label for="message" class="block text-sm font-bold">Your Query</label>
-                <textarea name="message" id="message" rows="5" class="w-full px-3 py-2 border rounded"
-                    required></textarea>
-            </div>
 
-            <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
-                Send Query
-            </button>
-        </form>
-        <?php endif; ?>
-        <?php if(session('success')): ?>
-        <div class="p-4 mb-4 text-green-700 bg-green-200 border border-green-300 rounded">
-            <?php echo e(session('success')); ?>
+    </section>
 
-        </div>
-        <?php endif; ?>
+    <?php if (isset($component)) { $__componentOriginal03f08ab3762bc8a3e6141984c259e0ef = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal03f08ab3762bc8a3e6141984c259e0ef = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.car-requests','data' => ['car' => $car,'carRequests' => $carRequests]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('car-requests'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['car' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($car),'carRequests' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($carRequests)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal03f08ab3762bc8a3e6141984c259e0ef)): ?>
+<?php $attributes = $__attributesOriginal03f08ab3762bc8a3e6141984c259e0ef; ?>
+<?php unset($__attributesOriginal03f08ab3762bc8a3e6141984c259e0ef); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal03f08ab3762bc8a3e6141984c259e0ef)): ?>
+<?php $component = $__componentOriginal03f08ab3762bc8a3e6141984c259e0ef; ?>
+<?php unset($__componentOriginal03f08ab3762bc8a3e6141984c259e0ef); ?>
+<?php endif; ?>
 
-        <?php if (isset($component)) { $__componentOriginalf2dea380996b177535c782c4f12809a9 = $component; } ?>
+    <?php if (isset($component)) { $__componentOriginalf2dea380996b177535c782c4f12809a9 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalf2dea380996b177535c782c4f12809a9 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.show.similar','data' => ['similarCars' => $similarCars]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('show.similar'); ?>
@@ -312,11 +325,6 @@
 <?php $component = $__componentOriginalf2dea380996b177535c782c4f12809a9; ?>
 <?php unset($__componentOriginalf2dea380996b177535c782c4f12809a9); ?>
 <?php endif; ?>
-
-
-    </section>
-
-
 
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

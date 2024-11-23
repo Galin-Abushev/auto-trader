@@ -68,6 +68,11 @@ class Car extends Model
         return $this->belongsTo(User::class, 'created_by');
     }
 
+    public function requests()
+    {
+        return $this->hasMany(CarRequest::class);
+    }
+
 
     public static $statusLabels = [
         0 => 'Изчакващ',

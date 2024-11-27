@@ -76,6 +76,7 @@ class CarController extends Controller
 
         // Търсене по км
         if ($car_km_from && $car_km_to) {
+
             if($car_km_to < $car_km_from){
                 echo 'Моля въведете правилно ограничението за километри';
             }
@@ -178,16 +179,15 @@ class CarController extends Controller
             'car_place' =>  $request->input('car_place'),
             'contact_mail' =>  $request->input('contact_mail'),
             'contact_phone' =>  $request->input('contact_phone'),
-
-
             'created_by' => Auth::id(),
             'status' => 1,
         ]);
 
         $car_id = $result->id;
+
         $carequipments = $request->input('carequipments');
 
-        if(is_array($carequipments) && count($carequipments) > 0 && !empty( $car_id))
+        if(is_array($carequipments) && count($carequipments) > 0 && !empty($car_id))
         {
             foreach ( $carequipments as $equipment_id)
             {
@@ -228,10 +228,10 @@ class CarController extends Controller
         $cars = Car::orderBy('created_at', 'desc')->take(4)->get();
 
         $carequipments = CarEquipments::all();
+
         $carequipmentgroups = CarEquipmentGroups::all();
+
         $carsequipments = CarsEquipments::all();
-        //$car_equipment_ids = $car->carequipments->car_equipments_id->pluck('id')->toArray();
-        //@dd($car->carequipments->pivot->car_equipments_id);
 
         $similarCars = Car::
         where('car_brand_id', $car->car_brand_id)
@@ -242,6 +242,7 @@ class CarController extends Controller
 
         $carRequests = CarRequest::where('car_id', $car->id)
         ->where('user_id', '!=', Auth::user()->id) // Exclude requests made by the logged-in user
+
         ->get();
 
         return view('frontcars.show',compact('car', 'cars', 'carequipments', 'carsequipments', 'carequipmentgroups', 'similarCars', 'carRequests'));
@@ -263,9 +264,6 @@ class CarController extends Controller
         $carequipmentgroups = CarEquipmentGroups::all();
 
         $car_equipment_ids = $data->carequipments->pluck('id')->toArray();
-       // @dd($data);
-//ar_dump($car_equipment_ids);
-//die;
 
         return view('admincars.edit', [
             'data' => $data,
@@ -287,8 +285,7 @@ class CarController extends Controller
     public function adminupdate(Request $request, $id)
     {
         $data = Car::findOrFail($id);
-        //dd($request->all());
-            // validate
+
         $request->validate([
                 'brand_id' => ['required'],
                 'model_id' => ['required'],
@@ -322,7 +319,6 @@ class CarController extends Controller
 
                 ]);
 
-                //dd($request->all());
                 $data->carequipments()->sync($request->input('carequipments', []));
 
                 // persist
@@ -351,11 +347,9 @@ class CarController extends Controller
         $regions = Region::all();
         $carequipmentgroups = CarEquipmentGroups::all();
         $carequipments = CarEquipments::all();
-        //$car_km = Car::all();
 
         $data = Car::all();
-       // var_dump(  $cars );
-        //die;
+
         $selectedBrand = $request->input('brand_id');
 
         $selectedEngine = $request->input('engine_id');
@@ -440,11 +434,9 @@ class CarController extends Controller
         $regions = Region::all();
         $carequipmentgroups = CarEquipmentGroups::all();
         $carequipments = CarEquipments::all();
-        //$car_km = Car::all();
 
         $data = Car::all();
-       // var_dump(  $cars );
-        //die;
+
         $selectedBrand = $request->input('brand_id');
 
         $selectedEngine = $request->input('engine_id');

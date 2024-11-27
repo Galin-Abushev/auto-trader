@@ -22,6 +22,10 @@
                 <a href="/cars/create"> + Добави обява </a>
             </div>
 
+            <div>
+                Клиент : {{ Auth::user()->name}}
+            </div>
+
 
             @endauth
 

@@ -6,7 +6,9 @@
         @method('PATCH')
 
         <div class="flex gap-1 mt-1 thumbnail-photos">
+
             @if(!empty($data->carPhotos))
+
             @foreach ($data->carPhotos->take(12) as $photo)
 
             <div class="w-32 h-20">
@@ -19,13 +21,19 @@
             </div>
 
             @endforeach
+
             @else <h1>Няма качени снимки за този автомобил</h1>
+
             @endif
         </div>
+
         <x-forms.button form="form-edit">Редактирай</x-forms.button>
+
     </form>
+
     <form method="POST" action="/admincars/photos/{{ $data->id }}" id="form-delete" class="hiden">
         @csrf
         @method('DELETE')
     </form>
+
 </x-layout>

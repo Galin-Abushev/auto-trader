@@ -48,7 +48,9 @@
         </strong>
 
         <div class="flex flex-col">
+
             @foreach ( $carequipmentgroups as $carequipmentgroup )
+
             <div class="text-justify border-b border-black">
 
                 <strong>
@@ -58,6 +60,7 @@
                 <div class="">
 
                     @foreach ( $carequipments as $carequipment )
+
                     @if ($carequipmentgroup->id == $carequipment->car_equipment_groups_id)
 
                     <div class="flex items-center me-4 ">
@@ -74,16 +77,15 @@
                     @endforeach
 
                     <div></div>
+
                 </div>
 
             </div>
             @endforeach
         </div>
         <div>
-
             <x-forms.input type="file" label="Снимки за автомобила" name="car_photos[]" placeholder="Избери снимки..."
                 multiple />
-
         </div>
         <x-forms.button>Създай</x-forms.button>
     </x-forms.form>

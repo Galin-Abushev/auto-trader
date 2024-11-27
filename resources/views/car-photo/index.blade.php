@@ -1,14 +1,21 @@
 <x-layout>
-    <x-page-heading>Редакция на снимките на автомобил: {{ $data->carbrand->brand_name}} - {{
-        $data->carmodel->model_name}}
+
+    <x-page-heading>Редакция на снимките на автомобил: {{ $data->carbrand->brand_name }} - {{
+        $data->carmodel->model_name }}
     </x-page-heading>
 
     @if($errors->any())
+
     <ul>
+
         @foreach ($errors->all() as $error)
+
         <li>{{$error}}</li>
+
         @endforeach
+
     </ul>
+
     @endif
 
     <form class="max-w-2xl mx-auto space-y-6" method="POST" action="/admincars/photos/edit/{{ $data->id }} "

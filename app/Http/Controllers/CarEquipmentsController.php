@@ -69,6 +69,7 @@ class CarEquipmentsController extends Controller
     public function edit( $id)
     {
         $carequipmentgroup = CarEquipmentGroups::all();
+
         $data = CarEquipments::find($id);
 
         return view('carequipments.edit', ['data' => $data]);

@@ -8,6 +8,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
+
     <?php if (isset($component)) { $__componentOriginal8026f1991abb42645b4d7cc7ace47942 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal8026f1991abb42645b4d7cc7ace47942 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.page-heading','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -32,12 +33,11 @@
         <?php echo csrf_field(); ?>
         <?php echo method_field('PATCH'); ?>
 
-
         <h2>Редактирай снимките на автомобила</h2>
-
 
         <div class="flex gap-1 mt-1 thumbnail-photos">
             <?php if(!empty($data->carPhotos)): ?>
+
             <?php $__currentLoopData = $data->carPhotos->take($alabala->maxPhotos); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $photo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
             <div class="w-32 h-28">
@@ -48,7 +48,9 @@
             </div>
 
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
             <?php else: ?> <h1>Няма качени снимки за този автомобил</h1>
+
             <?php endif; ?>
         </div>
         <?php if (isset($component)) { $__componentOriginal48c3958713aa2b1d2dd1900fbfcfc804 = $component; } ?>
@@ -84,7 +86,9 @@
 <?php $component->withAttributes(['id' => 'brand_name','label' => 'Марка','name' => 'brand_id']); ?>
             <option value="">-избери марка за модела-</option>
             <?php $__currentLoopData = $carbrands; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $carbrand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
             <option value="<?php echo e($carbrand->id); ?>" <?php echo e($data->carbrand->id == $carbrand->id ? 'selected' : ''); ?>><?php echo e($carbrand->brand_name); ?></option>
+
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
@@ -109,7 +113,9 @@
 <?php $component->withAttributes(['id' => 'model_name','label' => 'Модел','name' => 'model_id']); ?>
             <option value="">-избери модел-</option>
             <?php $__currentLoopData = $carmodels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $carmodel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
             <option value="<?php echo e($carmodel->id); ?>" <?php echo e($data->carmodel->id == $carmodel->id ? 'selected' : ''); ?>><?php echo e($carmodel->model_name); ?></option>
+
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
@@ -134,7 +140,9 @@
 <?php $component->withAttributes(['id' => 'engine_name','label' => 'Двигател','name' => 'engine_id']); ?>
             <option value="">-избери двигател-</option>
             <?php $__currentLoopData = $carengines; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $carengine): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
             <option value="<?php echo e($carengine->id); ?>" <?php echo e($data->carengine->id == $carengine->id ? 'selected' : ''); ?>><?php echo e($carengine->engine_name); ?></option>
+
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
@@ -159,7 +167,9 @@
 <?php $component->withAttributes(['id' => 'region_name','label' => 'Регион','name' => 'region_id']); ?>
             <option value="">-избери регион-</option>
             <?php $__currentLoopData = $regions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $region): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
             <option value="<?php echo e($region->id); ?>" <?php echo e($data->region->id == $region->id ? 'selected' : ''); ?>><?php echo e($region->region_name); ?></option>
+
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
@@ -235,6 +245,7 @@
 <?php endif; ?>
 
         <?php $__currentLoopData = $carequipmentgroups; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $carequipmentgroup): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
         <div class="border-b border-black">
 
             <strong>

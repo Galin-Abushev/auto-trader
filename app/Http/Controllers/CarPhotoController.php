@@ -16,11 +16,14 @@ class CarPhotoController extends Controller
 public function index($id)
 {
     $data = Car::findOrFail($id);
+
     $carBrand = CarBrand::all();
+
     $alabala = new CarPhoto();
 
 
     $carPhotos = CarPhoto::all();
+
     return view('car-photo.index', compact('data', 'carBrand', 'alabala'));
 }
 
@@ -49,6 +52,7 @@ public function store(Request $request, $id)
 }
 
 public function edit($id)  {
+
     $data = Car::findOrFail($id);
 
     $carPhotos = CarPhoto::all();

@@ -8,6 +8,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
+
     <?php if (isset($component)) { $__componentOriginal8026f1991abb42645b4d7cc7ace47942 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal8026f1991abb42645b4d7cc7ace47942 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.page-heading','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -31,11 +32,17 @@
 <?php endif; ?>
 
     <?php if($errors->any()): ?>
+
     <ul>
+
         <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
         <li><?php echo e($error); ?></li>
+
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
     </ul>
+
     <?php endif; ?>
 
     <form class="max-w-2xl mx-auto space-y-6" method="POST" action="/admincars/photos/edit/<?php echo e($data->id); ?> "

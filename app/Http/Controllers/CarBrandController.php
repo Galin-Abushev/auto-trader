@@ -47,11 +47,13 @@ class CarBrandController extends Controller
         $request->validate([
             'brand_name' => ['required', 'unique:car_brands,brand_name']
         ]);
+
         $data = CarBrand::create([
             'brand_name' => $request->input('brand_name'),
             'created_by' => Auth::id(),
             'status' => 0,
         ]);
+
         return redirect('/carbrands');
     }
 
@@ -80,6 +82,7 @@ class CarBrandController extends Controller
     public function update($id)
     {
         $status = Status::all();
+
             // validate
         request()->validate([
             'brand_name' => ['required', 'min:2']

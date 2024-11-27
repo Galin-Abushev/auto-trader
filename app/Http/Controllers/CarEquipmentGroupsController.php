@@ -15,8 +15,7 @@ class CarEquipmentGroupsController extends Controller
      */
     public function index()
     {
-
-        $carequipmentGroups = CarEquipmentGroups::with('createdBy')->get();
+    $carequipmentGroups = CarEquipmentGroups::with('createdBy')->get();
 
     return view('carequipmentgroups.index', [
         'carequipmentgroups' => CarEquipmentGroups::all(),
@@ -42,6 +41,7 @@ class CarEquipmentGroupsController extends Controller
         $request->validate([
             'group_name' => ['required', 'unique:car_equipment_groups,group_name']
         ]);
+
         $data = CarEquipmentGroups::create([
             'group_name' => $request->input('group_name'),
             'created_by' => Auth::id(),

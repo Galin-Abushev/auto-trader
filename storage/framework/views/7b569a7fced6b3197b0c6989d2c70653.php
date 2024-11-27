@@ -8,9 +8,11 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
+
     <div class="flex mb-2 ">
         <a href="/admincars/create" class="px-4 border-2 border-black rounded-xl ">+ Автомобил</a>
     </div>
+
     <?php if (isset($component)) { $__componentOriginala22641835cdc236e966401327a423643 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginala22641835cdc236e966401327a423643 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.forms.form','data' => ['class' => 'items-start']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -49,10 +51,12 @@
 <?php $component = $__componentOriginal7041cc63efd62f0450fe4bb37aadf484; ?>
 <?php unset($__componentOriginal7041cc63efd62f0450fe4bb37aadf484); ?>
 <?php endif; ?>
+
             </div>
 
 
             <div class="px-2 mb-2 text-xs">
+
                 <?php if (isset($component)) { $__componentOriginal7041cc63efd62f0450fe4bb37aadf484 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal7041cc63efd62f0450fe4bb37aadf484 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.forms.select','data' => ['class' => 'w-40 bg-blue-200','id' => 'engine_id','label' => 'Двигател','name' => 'engine_id']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -65,8 +69,11 @@
 <?php $component->withAttributes(['class' => 'w-40 bg-blue-200','id' => 'engine_id','label' => 'Двигател','name' => 'engine_id']); ?>
                     <option value="">-всички-</option>
                     <?php $__currentLoopData = $carengines; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $carengine): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
                     <option value="<?php echo e($carengine->id); ?>" <?php echo e($selectedEngine==$carengine->id ? 'selected' : ''); ?>><?php echo e($carengine->engine_name); ?></option>
+
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
                  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal7041cc63efd62f0450fe4bb37aadf484)): ?>
@@ -91,8 +98,10 @@
 <?php endif; ?>
 <?php $component->withAttributes(['class' => 'w-40 bg-blue-200','id' => 'region_id','label' => 'Регион','name' => 'region_id']); ?>
                     <option value="">-всички-</option>
+
                     <?php $__currentLoopData = $regions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $region): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option value="<?php echo e($region->id); ?>" <?php echo e($selectedRegion==$region->id ? 'selected' : ''); ?>><?php echo e($region->region_name); ?></option>
+
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
@@ -254,7 +263,9 @@
 <?php unset($__componentOriginala22641835cdc236e966401327a423643); ?>
 <?php endif; ?>
     <?php if($cars->isEmpty()): ?>
+
     <p>Няма автомобили съответстващи на зададените критерии.</p>
+
     <?php else: ?>
 
     <table class="mt-2 border-4 border-black">
@@ -272,13 +283,12 @@
                 <th class="px-4 border-2 border-black">Последна редакция</th>
                 <th class="px-4 border-2 border-black">Статус</th>
                 <th class="px-4 border-2 border-black">Автор</th>
-
-
-
             </tr>
         </thead>
         <tbody class="text-xs border-2 border-black">
+
             <?php $__currentLoopData = $cars; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $car): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
             <tr class="border-2 border-black ">
                 <td class="border-2 border-black"><?php echo e($car->id); ?></td>
                 <td class="border-2 border-black"><?php echo e($car->carBrand->brand_name); ?></td>
@@ -296,11 +306,10 @@
                 <td>
                     <a href="/admincars/edit/<?php echo e($car->id); ?>">Редактиране </a>
                 </td>
-
-
             </tr>
 
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
         </tbody>
     </table>
     <?php endif; ?>

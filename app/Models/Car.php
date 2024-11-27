@@ -49,7 +49,7 @@ class Car extends Model
 
     public function carsequipments(): BelongsToMany
     {
-        return $this->BelongsToMany(CarsEquipments::class,'cars_equipments', 'car_id', 'car_equipments_id');
+        return $this->BelongsToMany(CarsEquipments::class, 'cars_equipments', 'car_id', 'car_equipments_id');
     }
 
     public function carPhotos()

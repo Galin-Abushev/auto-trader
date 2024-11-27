@@ -1,16 +1,16 @@
 <x-layout>
+
     <x-page-heading>Редакция на автомобил :</x-page-heading>
 
     <form class="max-w-2xl mx-auto space-y-6" method="POST" action="/admincars/{{ $data->id }}">
         @csrf
         @method('PATCH')
 
-
         <h2>Редактирай снимките на автомобила</h2>
-
 
         <div class="flex gap-1 mt-1 thumbnail-photos">
             @if(!empty($data->carPhotos))
+
             @foreach ($data->carPhotos->take($alabala->maxPhotos) as $photo)
 
             <div class="w-32 h-28">
@@ -21,7 +21,9 @@
             </div>
 
             @endforeach
+
             @else <h1>Няма качени снимки за този автомобил</h1>
+
             @endif
         </div>
         <x-forms.button form="form-edit">Редактирай</x-forms.button>
@@ -30,32 +32,40 @@
         <x-forms.select id="brand_name" label="Марка" name="brand_id">
             <option value="">-избери марка за модела-</option>
             @foreach ( $carbrands as $carbrand )
+
             <option value="{{ $carbrand->id }}" {{ $data->carbrand->id == $carbrand->id ? 'selected' : '' }}>{{
                 $carbrand->brand_name}}</option>
+
             @endforeach
         </x-forms.select>
 
         <x-forms.select id="model_name" label="Модел" name="model_id">
             <option value="">-избери модел-</option>
             @foreach ( $carmodels as $carmodel )
+
             <option value="{{ $carmodel->id }}" {{ $data->carmodel->id == $carmodel->id ? 'selected' : '' }}>{{
                 $carmodel->model_name}}</option>
+
             @endforeach
         </x-forms.select>
 
         <x-forms.select id="engine_name" label="Двигател" name="engine_id">
             <option value="">-избери двигател-</option>
             @foreach ( $carengines as $carengine )
+
             <option value="{{ $carengine->id }}" {{ $data->carengine->id == $carengine->id ? 'selected' : '' }}>{{
                 $carengine->engine_name}}</option>
+
             @endforeach
         </x-forms.select>
 
         <x-forms.select id="region_name" label="Регион" name="region_id">
             <option value="">-избери регион-</option>
             @foreach ( $regions as $region )
+
             <option value="{{ $region->id }}" {{ $data->region->id == $region->id ? 'selected' : '' }}>{{
                 $region->region_name}}</option>
+
             @endforeach
         </x-forms.select>
 
@@ -68,6 +78,7 @@
             id="carkm" />
 
         @foreach ( $carequipmentgroups as $carequipmentgroup )
+
         <div class="border-b border-black">
 
             <strong>

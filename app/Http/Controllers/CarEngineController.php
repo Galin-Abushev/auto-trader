@@ -39,11 +39,13 @@ class CarEngineController extends Controller
         $carEngineAttributes = $request->validate([
             'engine_name' => ['required', 'unique:car_engines,engine_name']
         ]);
+
         $data = CarEngine::create([
             'engine_name' => $request->input('engine_name'),
             'created_by' => Auth::id(),
             'status' => 0,
         ]);
+
         return redirect('/carengines');
     }
     /**

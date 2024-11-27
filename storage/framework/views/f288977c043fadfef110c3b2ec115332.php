@@ -22,6 +22,11 @@
                 <a href="/cars/create"> + Добави обява </a>
             </div>
 
+            <div>
+                Клиент : <?php echo e(Auth::user()->name); ?>
+
+            </div>
+
 
             <?php endif; ?>
 
